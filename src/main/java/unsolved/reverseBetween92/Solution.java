@@ -13,7 +13,22 @@ package unsolved.reverseBetween92;
 public class Solution {
 
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        return null;
+        int[] dp = new int[right-left+1];
+        ListNode current = head;
+        int count = 1;
+        int dpIndex = 0;
+        while (current!=null) {
+            if (count>=left && count<=right) {
+                dp[dpIndex++] = current.val;
+            }
+            current = current.next;
+            count++;
+        }
+        ListNode res = head;
+        ListNode cur = null;
+
+
+        return res;
     }
 
 
