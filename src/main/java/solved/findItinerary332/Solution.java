@@ -3,43 +3,31 @@ package solved.findItinerary332;
 import java.util.*;
 
 class Solution {
-    static class Graph {
-        private String name;
-        private Graph[] children;
-    }
     public List<String> findItinerary(List<List<String>> tickets) {
-        Map<String, List<String>> fromTo = new HashMap<>();
+        Map<String, PriorityQueue<String>> graph = new HashMap<>();
+
         for (List<String> ticket : tickets) {
-            fromTo.putIfAbsent(ticket.get(0), new ArrayList<>());
-            fromTo.computeIfPresent(ticket.get(0), (k,v)->{
-                v.add(ticket.get(1));
-                return v;
-            });
+            graph.putIfAbsent(ticket.get(0), new PriorityQueue<>());
+            graph.get(ticket.get(0)).add(ticket.get(1));
         }
 
-        for (List<String> v : fromTo.values()) {
-            v.sort(String::compareTo);
-        }
+        LinkedList<String> itinerary = new LinkedList<>();
 
-        List<String> res = new ArrayList<>();
-        res.add("JFK");
-        help(res, fromTo, "JFK");
-        return res;
+        dfs("JFK", graph, itinerary);
+
+        return itinerary;
     }
 
-    private void help(List<String> res, Map<String, List<String>> fromTo, String from) {
-        List<String> tos = fromTo.get(from);
-        if (tos==null || tos.isEmpty()) {
-            return;
+    private void dfs(String airport, Map<String, PriorityQueue<String>> graph, LinkedList<String> itinerary) {
+        PriorityQueue<String> nextAirports = graph.get(airport);
+        while (nextAirports != null && !nextAirports.isEmpty()) {
+            dfs(nextAirports.poll(), graph, itinerary);
         }
-        String to = tos.get(0);
-        res.add(to);
-        tos.remove(0);
-        help(res, fromTo, to);
+        itinerary.addFirst(airport);
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.findItinerary(List.of(List.of("JFK","KUL"), List.of("JFK","NRT"), List.of("NRT","JFK"))));
+        System.out.println(solution.findItinerary(List.of(List.of("JFK","SFO"), List.of("JFK","ATL"), List.of("SFO","ATL"), List.of("ATL","JFK"), List.of("ATL","SFO"))));
     }
 }
