@@ -1,4 +1,4 @@
-package solved.problem1to1000._101to200.sumNumbers129;
+package solved.problem1to1000._101to200._121to130.sumNumbers129;
 
 
 public class Solution {

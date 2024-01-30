@@ -1,4 +1,4 @@
-package solved.problem1to1000._101to200.maxProfit122;
+package solved.problem1to1000._101to200._121to130.maxProfit122;
 
 class Solution {
     public int maxProfit(int[] prices) {
