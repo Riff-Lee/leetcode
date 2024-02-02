@@ -1,4 +1,4 @@
-package solved.problem1to1000._201to300.mystack225;
+package solved.problem1to1000._201to300._221to230.mystack225;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

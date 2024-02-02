@@ -1,4 +1,4 @@
-package solved.problem1to1000._901to1000.minFallingPathSum931;
+package solved.problem1to1000._901to1000._931to40.minFallingPathSum931;
 
 class Solution {
     public int minFallingPathSum(int[][] matrix) {

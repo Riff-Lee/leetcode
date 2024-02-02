@@ -1,4 +1,4 @@
-package solved.problem1to1000._901to1000.rangesumofBTS938;
+package solved.problem1to1000._901to1000._931to40.rangesumofBTS938;
 
 public class Main {
     public static void main(String[] args) {

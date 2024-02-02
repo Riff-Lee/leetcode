@@ -1,4 +1,4 @@
-package solved.problem1to1000._901to1000.rangesumofBTS938;
+package solved.problem1to1000._901to1000._931to40.rangesumofBTS938;
 
 /**
  * Definition for a binary tree node.
