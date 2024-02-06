@@ -1,6 +1,4 @@
-package solved.problem1to1000._301to400.findTheDifference389;
-
-import java.util.*;
+package solved.problem1to1000._301to400._381to390.findTheDifference389;
 
 class Solution {
     public char findTheDifference(String s, String t) {
