@@ -1,7 +1,4 @@
-package solved.problem1001to2000._1401to1500.maxScore1422;
-
-import java.util.ArrayList;
-import java.util.List;
+package solved.problem1001to2000._1401to1500._1421to1430.maxScore1422;
 
 class Solution {
     public int maxScore(String s) {
