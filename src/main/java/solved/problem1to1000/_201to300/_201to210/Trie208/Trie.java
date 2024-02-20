@@ -1,4 +1,4 @@
-package solved.problem1to1000._201to300.Trie208;
+package solved.problem1to1000._201to300._201to210.Trie208;
 
 class TrieNode {
     public char val;
