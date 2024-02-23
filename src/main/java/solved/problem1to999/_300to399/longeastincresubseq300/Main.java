@@ -1,4 +1,4 @@
-package solved.problem1to1000._201to300.longeastincresubseq300;
+package solved.problem1to999._300to399.longeastincresubseq300;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._61to70.climbStairs70;
+package solved.problem1to999._1to99._70to79.climbStairs70;
 
 class Solution {
     public int climbStairs(int n) {
