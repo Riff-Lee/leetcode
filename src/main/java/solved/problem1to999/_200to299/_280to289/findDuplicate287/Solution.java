@@ -1,6 +1,4 @@
-package solved.problem1to1000._201to300.findDuplicate287;
-
-import java.util.*;
+package solved.problem1to999._200to299._280to289.findDuplicate287;
 
 class Solution {
     public int findDuplicate(int[] nums) {

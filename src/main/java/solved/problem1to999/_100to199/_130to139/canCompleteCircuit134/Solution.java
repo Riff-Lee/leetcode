@@ -1,9 +1,25 @@
-package solved.problem1to1000._101to200._131to140.canCompleteCircuit134;
+package solved.problem1to999._100to199._130to139.canCompleteCircuit134;
 
 import java.util.*;
 
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
+        int total_surplus = 0;
+        int surplus = 0;
+        int start = 0;
+
+        for(int i = 0; i < n; i++){
+            total_surplus += gas[i] - cost[i];
+            surplus += gas[i] - cost[i];
+            if(surplus < 0){
+                surplus = 0;
+                start = i + 1;
+            }
+        }
+        return (total_surplus < 0) ? -1 : start;
+    }
+    public int canCompleteCircuit2(int[] gas, int[] cost) {
         int tg=0;
         int tc=0;
         for(int i=0;i<gas.length;i++){
