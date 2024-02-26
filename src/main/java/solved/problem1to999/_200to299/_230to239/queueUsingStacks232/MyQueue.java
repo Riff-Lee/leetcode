@@ -1,4 +1,4 @@
-package solved.problem1to1000._201to300.queueUsingStacks232;
+package solved.problem1to999._200to299._230to239.queueUsingStacks232;
 
 import java.util.Stack;
 
