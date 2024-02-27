@@ -1,4 +1,4 @@
-package solved.problem1to999._1to99.canJump55;
+package solved.problem1to999._1to99._50to59.canJump55;
 
 class Solution {
 
