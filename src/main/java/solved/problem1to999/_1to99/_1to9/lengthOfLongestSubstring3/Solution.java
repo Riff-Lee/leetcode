@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._1to10.lengthOfLongestSubstring3;
+package solved.problem1to999._1to99._1to9.lengthOfLongestSubstring3;
 
 import java.util.*;
 

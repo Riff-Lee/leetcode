@@ -1,27 +1,22 @@
-package solved.problem1to999._1to99._40to49.jump45;
+package solved.problem1to999._1to99._40to49.rotate48;
 
 class Solution {
-    public int jump(int[] nums) {
-        int n = nums.length;
-        int[] jump = new int[n];
-        jump[n-1] = 0;
-        for (int i = n-2; i>=0; i--) {
-            if (nums[i]+i>=n-1) {
-                jump[i] = 1;
-            } else {
-                int min = Integer.MAX_VALUE;
-                for (int j=1; j<=nums[i]; j++) {
-                    if (jump[j+i] > 0) {
-                        min = Math.min(jump[j+i], min);
-                    }
-                }
-                jump[i] = min==Integer.MAX_VALUE ? 0 : min+1;
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] origin = new int[n][n];
+        for (int i=0;i<n;i++) {
+            System.arraycopy(matrix[i], 0, origin[i], 0, n);
+        }
+        for (int i=0;i<n;i++) {
+            int col = n-i-1;
+            for (int j=0;j<n;j++) {
+                matrix[j][col] = origin[i][j];
             }
         }
-        return jump[0];
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.jump(new int[] {2,3,1,1,4}));
+        solution.rotate(new int[][]{{1,2,3},{4,5,6},{7,8,9}});
+
     }
 }

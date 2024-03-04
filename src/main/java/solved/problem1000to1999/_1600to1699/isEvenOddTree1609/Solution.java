@@ -1,66 +1,36 @@
-package solved.problem1001to2000._1401to1500.pseudoPalindromicPaths1457;
+package solved.problem1000to1999._1600to1699.isEvenOddTree1609;
 
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Solution {
-    int count = 0;
-    public int pseudoPalindromicPaths (TreeNode root) {
-        help(root, new HashSet<>());
-        return count;
+    int[] oddLastNumber = new int[100000];
+    int[] evenLastNumber = new int[100000];
+
+    public boolean isEvenOddTree(TreeNode root) {
+        Arrays.fill(oddLastNumber, 1000001);
+        return help(root, 0);
     }
 
-    private void help(TreeNode node, Set<Integer> oddNums) {
+    private boolean help(TreeNode node, int level) {
         if (node==null) {
-            return;
+            return true;
         }
-        if (oddNums.contains(node.val)) {
-            oddNums.remove(node.val);
-        } else {
-            oddNums.add(node.val);
-        }
-        if (node.left == null && node.right == null) {
-            if (oddNums.size()<=1) {
-                count++;
+        if (level%2==0) {
+            if (node.val%2==0 || node.val <= evenLastNumber[level]) {
+                return false;
             }
-            if (oddNums.contains(node.val)) {
-                oddNums.remove(node.val);
-            } else {
-                oddNums.add(node.val);
-            }
-            return;
-        }
-        help(node.left, oddNums);
-        help(node.right, oddNums);
-        if (oddNums.contains(node.val)) {
-            oddNums.remove(node.val);
+            evenLastNumber[level] = node.val;
         } else {
-            oddNums.add(node.val);
+            if (node.val%2!=0 || node.val >= oddLastNumber[level]) {
+                return false;
+            }
+            oddLastNumber[level] = node.val;
         }
+        return help(node.left,level+1) && help(node.right, level+1);
     }
-
-    /**
-     * int ans =0;
-     *     public int pseudoPalindromicPaths (TreeNode root) {
-     *         func(root, 0);
-     *         return ans;
-     *     }
-     *     void func(TreeNode node, int seen){
-     *         if(node == null) return;
-     *         // System.out.println("b4 " + Integer.toBinaryString(seen));
-     *         seen^=(1<<node.val);
-     *         // System.out.println("after " + Integer.toBinaryString(seen));
-     *         if(node.left == null && node.right == null){
-     *             if((seen & (seen-1)) == 0){
-     *                 ans++;
-     *             }
-     *             return;
-     *         }
-     *         func(node.left, seen);
-     *         func(node.right, seen);
-     *
-     *     }
-     */
 
     public static class TreeNode {
         int val;
@@ -76,6 +46,6 @@ public class Solution {
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.pseudoPalindromicPaths(new TreeNode(2,new TreeNode(3, new TreeNode(3), new TreeNode(1)),new TreeNode(1,null,new TreeNode(1)))));
+        System.out.println(solution.isEvenOddTree(new TreeNode(2,new TreeNode(3, new TreeNode(3), new TreeNode(1)),new TreeNode(1,null,new TreeNode(1)))));
     }
 }

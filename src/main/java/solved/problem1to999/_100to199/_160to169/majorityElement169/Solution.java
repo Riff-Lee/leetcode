@@ -1,4 +1,4 @@
-package solved.problem1to999._100to199.majorityElement169;
+package solved.problem1to999._100to199._160to169.majorityElement169;
 
 
 public class Solution {

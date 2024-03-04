@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._21to30.removeDuplicates26;
+package solved.problem1to999._1to99._20to29.removeDuplicates26;
 
 
 import java.util.*;

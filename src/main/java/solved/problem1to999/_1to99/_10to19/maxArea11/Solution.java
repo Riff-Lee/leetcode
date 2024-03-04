@@ -1,23 +1,27 @@
-package solved.problem1to999._1to99._10to19.longestCommonPrefix14;
+package solved.problem1to999._1to99._10to19.maxArea11;
 
 class Solution {
 
-    public String longestCommonPrefix(String[] strs) {
-        int n = strs[0].length();
-        StringBuilder sb = new StringBuilder();
-        for (int i=0;i<n;i++) {
-            char ch = strs[0].charAt(i);
-            for (String s:strs) {
-                if (i>=s.length() || s.charAt(i)!=ch) {
-                    return sb.toString();
-                }
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int maxArea = 0;
+
+        while (left < right) {
+            int currentArea = Math.min(height[left], height[right]) * (right - left);
+            maxArea = Math.max(maxArea, currentArea);
+
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
             }
-            sb.append(ch);
         }
-        return sb.toString();
+
+        return maxArea;
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.longestCommonPrefix(new String[] {"flower","flow","flight"}));
+        System.out.println(solution.maxArea(new int[] {1,8,6,2,5,4,8,3,7}));
     }
 }

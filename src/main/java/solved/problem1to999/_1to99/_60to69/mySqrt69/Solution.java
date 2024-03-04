@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._61to70.mySqrt69;
+package solved.problem1to999._1to99._60to69.mySqrt69;
 
 class Solution {
     public int mySqrt(int x) {

@@ -1,44 +1,26 @@
-package solved.problem1to1000._201to300._201to210.isHappy202;
+package solved.problem1to999._200to299._200to209.minSubArrayLen209;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 class Solution {
-    public boolean isHappy(int n) {
-        while (n>9){
-            int newNum=0;
-            while (n!=0){
-                int digit=n%10;
-                n/=10;
-                newNum+=Math.pow(digit,2);
-
+    public int minSubArrayLen(int target, int[] nums) {
+        int left = 0;
+        int minLength = Integer.MAX_VALUE;
+        int sum=0;
+        for (int right=0;right<nums.length;right++) {
+            sum+=nums[right];
+            while (sum>=target) {
+                minLength=Math.min(minLength,right-left+1);
+                sum-=nums[left++];
             }
-            n=newNum;
-
         }
-        return n==7||n==1;
-    }
-
-    public boolean isHappy1(int n) {
-        Set<String> set = new HashSet<>();
-        String s = String.valueOf(n).replaceAll("0+$", "");
-
-        while (!s.equals("1")) {
-            if (set.contains(s)) {
-                return false;
-            }
-            set.add(s);
-            int total = 0;
-            for (char ch : s.toCharArray()) {
-                total+=(ch-'0')*(ch-'0');
-            }
-            s = String.valueOf(total).replaceAll("0+$", "");
-        }
-        return true;
+        return minLength==Integer.MAX_VALUE?0:minLength;
     }
 
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.isHappy(19));
+        System.out.println(solution.minSubArrayLen(7, new int[]{2,3,1,2,4,3}));
     }
 }

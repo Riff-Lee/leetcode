@@ -1,22 +1,24 @@
-package solved.problem1to999._500to599.diameterOfBinaryTree543;
-
-import java.util.Arrays;
+package solved.problem1to999._500to599.findBottomLeftValue513;
 
 class Solution {
-    int diameter = 0;
-    public int diameterOfBinaryTree(TreeNode root) {
-        depth(root);
-        return diameter;
+    int bottom=0;
+    int value;
+    public int findBottomLeftValue(TreeNode root) {
+        value=root.val;
+        help(root, 0);
+        return value;
     }
 
-    private int depth(TreeNode node) {
-        if (node == null) {
-            return 0;
+    private void help(TreeNode node, int depth) {
+        if (node==null) {
+            return;
         }
-        int left = depth(node.left);
-        int right = depth(node.right);
-        diameter = Math.max(left+right, diameter);
-        return Math.max(left, right) + 1;
+        if (depth > bottom) {
+            bottom=depth;
+            value = node.val;
+        }
+        help(node.left, depth+1);
+        help(node.right, depth+1);
     }
 
     public static class TreeNode {
@@ -34,6 +36,6 @@ class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.diameterOfBinaryTree(new TreeNode()));
+        System.out.println(solution.findBottomLeftValue(new TreeNode()));
     }
 }

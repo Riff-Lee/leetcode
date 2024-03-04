@@ -1,34 +1,36 @@
-package solved.problem1to1000._901to1000.sumSubarrayMins907;
+package solved.problem1to999._900to999.bagOfTokensScore948;
 
 
-import java.util.Stack;
+import java.util.*;
 
 public class Solution {
-    public int sumSubarrayMins(int[] arr) {
-        final int MOD = 1000000007;
-        Stack<Integer> st = new Stack<>();
-        long sumOfMinimums = 0;
-
-        for (int i = 0; i <= arr.length; i++) {
-            while (!st.empty() && (i == arr.length || arr[st.peek()] >= arr[i])) {
-                int mid = st.pop();
-                int leftBoundary = st.empty() ? -1 : st.peek();
-                int rightBoundary = i;
-
-                long count = (mid - leftBoundary) * (rightBoundary - mid) % MOD;
-
-                sumOfMinimums += (count * arr[mid]) % MOD;
-                sumOfMinimums %= MOD;
-            }
-            st.push(i);
+    public int bagOfTokensScore(int[] tokens, int power) {
+        Arrays.sort(tokens);
+        if (tokens.length==0||power<tokens[0]) {
+            return 0;
         }
-
-        return (int) sumOfMinimums;
+        int score = 0;
+        int left = 0;
+        int right = tokens.length-1;
+        while (left<=right) {
+            if (tokens[left]<=power) {
+                power-=tokens[left++];
+                score++;
+            } else {
+                if (left<right) {
+                    power+=tokens[right--];
+                    score--;
+                } else {
+                    break;
+                }
+            }
+        }
+        return score;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.sumSubarrayMins(new int[] {3,1,2,4}));
+        System.out.println(solution.bagOfTokensScore(new int[] {100},50));
     }
 
 }

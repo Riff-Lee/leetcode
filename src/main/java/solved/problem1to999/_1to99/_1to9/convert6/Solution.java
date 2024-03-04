@@ -1,71 +1,30 @@
-package solved.problem1to1000._1to100._1to10.addTwoNumbers2;
+package solved.problem1to999._1to99._1to9.convert6;
 
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return help(l1, l2, false);
-    }
+    public String convert(String s, int numRows) {
 
-    private ListNode help(ListNode l1, ListNode l2, boolean carryFlag) {
-        if (l1 ==null && l2==null) {
-            return carryFlag ? new ListNode(1) : null;
+        int groupNum = numRows==1?1:2*numRows-2;
+        char[] chars = s.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < s.length(); j+=groupNum) {
+            sb.append(chars[j]);
         }
-        ListNode res = new ListNode();
-        if (l1 == null) {
-            int nodeSum = carryFlag ? l2.val + 1 : l2.val;
-            if (nodeSum < 10) {
-                res.val = nodeSum;
-                res.next = help(null, l2.next, false);
-            } else {
-                res.val = nodeSum-10;
-                res.next = help(null, l2.next, true);
+        for (int i=1;i<numRows && i<s.length();i++) {
+            sb.append(chars[i]);
+            for (int j = groupNum; j < s.length()+groupNum; j+=groupNum) {
+                if (j-i>j-groupNum+numRows-1 && j-i<s.length()) {
+                    sb.append(chars[j-i]);
+                }
+                if (j+i<s.length()) {
+                    sb.append(chars[j+i]);
+                }
             }
-            return res;
         }
-        if (l2 == null) {
-
-            int nodeSum = carryFlag ? l1.val + 1 : l1.val;
-            if (nodeSum < 10) {
-                res.val = nodeSum;
-                res.next = help(l1.next, null, false);
-            } else {
-                res.val = nodeSum-10;
-                res.next = help(l1.next, null, true);
-            }
-            return res;
-        }
-
-        int nodeSum = carryFlag ? l1.val + l2.val + 1 : l1.val + l2.val;
-        if (nodeSum < 10) {
-            res.val = nodeSum;
-            res.next = help(l1.next, l2.next, false);
-        } else {
-            res.val = nodeSum-10;
-            res.next = help(l1.next, l2.next, true);
-        }
-        return res;
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9)))))));
-        ListNode l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
-        System.out.println(solution.addTwoNumbers(l1, l2));
-    }
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        System.out.println(solution.convert("ABCD",3));
     }
 }
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */

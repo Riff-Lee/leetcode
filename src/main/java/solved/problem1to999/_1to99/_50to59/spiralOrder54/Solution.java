@@ -1,54 +1,73 @@
-package solved.problem1to999._1to99._60to69.fullJustify68;
+package solved.problem1to999._1to99._50to59.spiralOrder54;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Solution {
-    public List<String> fullJustify(String[] words, int maxWidth) {
-        List<String> res = new ArrayList<>();
-        int width=0;
-        List<String> rows = new ArrayList<>();
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int left=-1;
+        int right=matrix[0].length;
+        int top=0;
+        int bottom= matrix.length;
+        int direction=0;//0->go right, 1->go down, 2->go left, 3->go up
+        int i=0,j=0;
         int num=0;
-        for (String word:words) {
-            if (width+word.length()+num>maxWidth) {
-                if (num==1) {
-                    res.add(rows.get(0)+" ".repeat(maxWidth-rows.get(0).length()));
-                } else {
-                    int space = (maxWidth-width)/(num-1);
-                    int mod = (maxWidth-width)%(num-1);
-                    String row;
-                    if (mod==0) {
-                        row = String.join(" ".repeat(space), rows);
-                    } else {
-                        row = rows.stream()
-                                .limit(mod)
-                                .map(item -> item + " ".repeat(space+1))
-                                .collect(Collectors.joining())
-                                + rows.stream()
-                                .skip(mod)
-                                .map(item -> item + " ".repeat(space))
-                                .collect(Collectors.joining());
+        int total = right*bottom;
+        List<Integer> res = new ArrayList<>();
+        while (num<total) {
+            switch (direction) {
+                case 0:{
+                    while (j<right) {
+                        res.add(matrix[i][j++]);
+                        num++;
                     }
-                    res.add(row.trim());
+                    i++;
+                    j--;
+                    right--;
+                    direction=1;
+                    break;
                 }
-                width=0;
-                num=0;
-                rows = new ArrayList<>();
+                case 1:{
+                    while (i<bottom) {
+                        res.add(matrix[i++][j]);
+                        num++;
+                    }
+                    i--;
+                    j--;
+                    bottom--;
+                    direction=2;
+                    break;
+                }
+                case 2:{
+                    while (j>left) {
+                        res.add(matrix[i][j--]);
+                        num++;
+                    }
+                    i--;
+                    j++;
+                    left++;
+                    direction=3;
+                    break;
+                }
+                case 3:{
+                    while (i>top) {
+                        res.add(matrix[i--][j]);
+                        num++;
+                    }
+                    i++;
+                    j++;
+                    top++;
+                    direction=0;
+                    break;
+                }
             }
-            width+=word.length();
-            num++;
-            rows.add(word);
-        }
-        if (num!=0) {
-            String row = String.join(" ", rows);
-            row = row + " ".repeat(maxWidth-width-num+1);
-            res.add(row);
         }
         return res;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16));
+        System.out.println(solution.spiralOrder(new int[][]{{1,2,3},{4,5,6},{7,8,9}}));
     }
 }

@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._21to30.removeElement27;
+package solved.problem1to999._1to99._20to29.removeElement27;
 
 
 public class Solution {

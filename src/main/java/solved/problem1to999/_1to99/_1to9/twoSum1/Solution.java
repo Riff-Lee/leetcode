@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._1to10.twoSum1;
+package solved.problem1to999._1to99._1to9.twoSum1;
 
 import java.util.*;
 

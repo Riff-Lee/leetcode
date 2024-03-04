@@ -1,22 +1,36 @@
-package solved.problem1to999._1to99._20to29.removeDuplicates26;
+package solved.problem1to999._1to99._10to19.threeSum15;
 
 
 import java.util.*;
 
 public class Solution {
-    public int removeDuplicates(int[] nums) {
-        int k = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i]!=nums[i-1]) {
-                nums[k] = nums[i];
-                k++;
+    public List<List<Integer>> threeSum(int[] nums) {
+        int target = 0;
+        Arrays.sort(nums);
+        Set<List<Integer>> s = new HashSet<>();
+        List<List<Integer>> output = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++){
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == target) {
+                    s.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++;
+                    k--;
+                } else if (sum < target) {
+                    j++;
+                } else {
+                    k--;
+                }
             }
         }
-        return k;
+        output.addAll(s);
+        return output;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.removeDuplicates(new int[] {1,1,2}));
+        System.out.println(solution.threeSum(new int[] {-1,0,1,2,-1,-4}));
     }
 }

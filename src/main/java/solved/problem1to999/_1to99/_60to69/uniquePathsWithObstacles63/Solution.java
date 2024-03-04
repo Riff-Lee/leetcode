@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._61to70.uniquePathsWithObstacles63;
+package solved.problem1to999._1to99._60to69.uniquePathsWithObstacles63;
 
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._21to30.strStr28;
+package solved.problem1to999._1to99._20to29.strStr28;
 
 
 public class Solution {

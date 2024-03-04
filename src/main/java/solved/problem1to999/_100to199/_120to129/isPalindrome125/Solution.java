@@ -1,21 +1,26 @@
-package solved.problem1to999._100to199._120to129.maxProfit121;
+package solved.problem1to999._100to199._120to129.isPalindrome125;
+
+
 
 class Solution {
-    public int maxProfit(int[] prices) {
-        int n = prices.length;
-        int[] suffix = new int[n];
-        suffix[n-1] = prices[n-1];
-        for (int i = n-2; i>=0; i--) {
-            suffix[i] = Math.max(suffix[i+1], prices[i]);
+    public boolean isPalindrome(String s) {
+        s=s.toLowerCase();
+        s=s.replaceAll("[^a-z0-9]", "");
+        char[] chars = s.toCharArray();
+        int left = 0;
+        int right = s.length()-1;
+        while (left<right) {
+            if (chars[left]!=chars[right]) {
+                return false;
+            }
+            left++;
+            right--;
+
         }
-        int max = 0;
-        for (int i=0; i<n; i++) {
-            max = Math.max(suffix[i]-prices[i], max);
-        }
-        return max;
+        return true;
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.maxProfit(new int[] {1}));
+        System.out.println(solution.isPalindrome(""));
     }
 }

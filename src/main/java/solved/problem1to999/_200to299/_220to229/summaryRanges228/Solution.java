@@ -1,28 +1,40 @@
-package solved.problem1to1000._201to300._221to230.majorityElement229;
+package solved.problem1to999._200to299._220to229.summaryRanges228;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class Solution {
 
-    public List<Integer> majorityElement(int[] nums) {
-        Map<Integer, Integer> ele = new HashMap<>();
-        for (int num : nums) {
-            ele.computeIfPresent(num, (k,v)->v+1);
-            ele.putIfAbsent(num, 1);
+    public List<String> summaryRanges(int[] nums) {
+        List<String> res = new ArrayList<>();
+        if (nums.length==0) {
+            return res;
         }
-        int k = nums.length/3;
-        List<Integer> res = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> entry : ele.entrySet()) {
-            if (k<entry.getValue()) {
-                res.add(entry.getKey());
+        int left = nums[0];
+        int i=1;
+        for (;i<nums.length;i++) {
+            if (nums[i-1] != nums[i] - 1) {
+                if (left == nums[i-1]) {
+                    res.add(String.valueOf(left));
+                } else {
+                    res.add(left + "->" + nums[i-1]);
+                }
+                left = nums[i];
             }
+        }
+        if (left==nums[i-1]) {
+            res.add(String.valueOf(left));
+        } else {
+            res.add(left+"->"+nums[i-1]);
         }
         return res;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.majorityElement(new int[] {3,2,3}));
+        System.out.println(solution.summaryRanges(new int[] {0,1,2,4,5,7}));
     }
 }
 

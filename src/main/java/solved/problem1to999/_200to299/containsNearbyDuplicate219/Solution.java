@@ -1,21 +1,38 @@
-package solved.problem1to1000._201to300.addDigits258;
+package solved.problem1to999._200to299.containsNearbyDuplicate219;
+
+import java.util.*;
 
 class Solution {
-    public int addDigits(int num) {
-        while (num>9) {
-            int sum = 0;
-            do {
-                int mol = num % 10;
-                sum +=mol;
-                num = num/10;
-            } while (num>0);
-            num = sum;
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if (k==0) {
+            return false;
         }
-        return num;
+        Set<Integer> set = new HashSet<>();
+        int i=0;
+        for (;i<=k&&i<nums.length;i++) {
+            if (set.contains(nums[i])) {
+                return true;
+            } else {
+                set.add(nums[i]);
+            }
+        }
+        if (i<k) {
+            return false;
+        }
+        set.remove(nums[0]);
+        for (;i<nums.length;i++) {
+            if (set.contains(nums[i])) {
+                return true;
+            } else {
+                set.remove(nums[i-k]);
+                set.add(nums[i]);
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.addDigits(Integer.MAX_VALUE));
+        System.out.println(solution.containsNearbyDuplicate(new int[]{4,1,2,3,1,5},3));
     }
 }
