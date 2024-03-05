@@ -1,4 +1,4 @@
-package solved.problem1001to2000._1701to1800.countHomogenous1759;
+package solved.problem1000to1999._1700to1799._1750to1759.countHomogenous1759;
 
 class Solution {
     public int countHomogenous(String s) {

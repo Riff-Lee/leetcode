@@ -1,6 +1,4 @@
-package solved.problem1001to2000._1701to1800.minOperations1758;
-
-import java.util.*;
+package solved.problem1000to1999._1700to1799._1750to1759.minOperations1758;
 
 class Solution {
     public int minOperations(String s) {
