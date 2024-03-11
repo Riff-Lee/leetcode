@@ -1,4 +1,4 @@
-package solved.problem1to1000._701to800.champagneTower799;
+package solved.problem1to999._700to799._790to799.champagneTower799;
 
 import java.util.*;
 
