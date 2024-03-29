@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._41to50.groupAnagrams49;
+package solved.problem1to999._1to99._40to49.groupAnagrams49;
 
 import java.util.*;
 

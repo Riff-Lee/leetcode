@@ -1,4 +1,4 @@
-package solved.problem1to1000._1to100._41to50.permutations46;
+package solved.problem1to999._1to99._40to49.permutations46;
 
 import java.util.Arrays;
 

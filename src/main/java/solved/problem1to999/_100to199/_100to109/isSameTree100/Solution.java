@@ -1,7 +1,5 @@
-package solved.problem1to999._100to199.isSameTree100;
+package solved.problem1to999._100to199._100to109.isSameTree100;
 
-
-import java.util.*;
 
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
