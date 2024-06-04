@@ -1,4 +1,4 @@
-package solved.problem1to1000._401to500.canCross403;
+package solved.problem1to999._400to499._400to409.canCross403;
 
 import java.util.*;
 
