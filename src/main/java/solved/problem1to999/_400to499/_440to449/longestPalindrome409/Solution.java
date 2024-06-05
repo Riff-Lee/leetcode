@@ -1,9 +1,4 @@
-package solved.problem1to999._400to499._400to409.longestPalindrome409;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+package solved.problem1to999._400to499._440to449.longestPalindrome409;
 
 class Solution {
     public int longestPalindrome(String s) {
