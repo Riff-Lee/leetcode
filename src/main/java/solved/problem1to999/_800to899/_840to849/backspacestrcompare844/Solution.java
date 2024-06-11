@@ -1,4 +1,4 @@
-package solved.problem1to1000._801to900.backspacestrcompare844;
+package solved.problem1to999._800to899._840to849.backspacestrcompare844;
 
 class Solution {
     public boolean backspaceCompare(String s, String t) {

@@ -1,4 +1,4 @@
-package solved.problem1to1000._801to900.backspacestrcompare844;
+package solved.problem1to999._800to899._840to849.backspacestrcompare844;
 
 public class Main {
     public static void main(String[] args) {

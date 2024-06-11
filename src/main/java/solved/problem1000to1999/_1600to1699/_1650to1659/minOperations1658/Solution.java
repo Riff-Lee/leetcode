@@ -1,4 +1,4 @@
-package solved.problem1001to2000._1601to1700.minOperations1658;
+package solved.problem1000to1999._1600to1699._1650to1659.minOperations1658;
 
 import java.util.Arrays;
 
