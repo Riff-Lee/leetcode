@@ -1,4 +1,4 @@
-package solved.problem3000to3999._3000to3099.maxSelectedElements3041;
+package unsolved.maxSelectedElements3041;
 
 
 import java.util.Arrays;
