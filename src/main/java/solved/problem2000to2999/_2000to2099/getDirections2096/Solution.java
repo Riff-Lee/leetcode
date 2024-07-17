@@ -3,65 +3,49 @@ package solved.problem2000to2999._2000to2099.getDirections2096;
 import java.util.*;
 
 class Solution {
-    boolean findStart;
-    boolean findDest;
-    int start;
-    int dest;
-    String[] path = new String[2];
-    int[][] numbers = new int[2][100001];
 
     public String getDirections(TreeNode root, int startValue, int destValue) {
-        start = startValue;
-        dest = destValue;
-        help(root, "", null, 0);
-        char[] startChars = path[0].toCharArray();
-        char[] destChars = path[1].toCharArray();
+        List<Character> toStart = new ArrayList<>();
+        help(root, toStart, startValue);
+        List<Character> toEnd = new ArrayList<>();
+        help(root, toEnd, destValue);
         int index = 0;
         while (true) {
-            if (index < startChars.length && index < destChars.length && startChars[index] == destChars[index]) {
+            if (index < toStart.size() && index < toEnd.size() && toStart.get(index).equals(toEnd.get(index))) {
                 index++;
             } else {
                 break;
             }
         }
+
         StringBuilder res = new StringBuilder();
-        for (int i = startChars.length - 1; i >= index; i--) {
-            if (startChars[i] == 'L' || startChars[i] == 'R') {
-                res.append('U');
-            }
-        }
-        for (int i = index; i < destChars.length; i++) {
-            if (destChars[i] == 'L' || destChars[i] == 'R') {
-                res.append(destChars[i]);
-            }
+        res.append("U".repeat(Math.max(0, toStart.size() - 1 - index + 1)));
+        for (int i = index; i < toEnd.size(); i++) {
+            res.append(toEnd.get(i));
         }
         return res.toString();
     }
 
-    private void help(TreeNode root, String currentPath, int[] number, int seq) {
-        if (number == null) {
-            number = new int[10001];
+    private boolean help(TreeNode root, List<Character> currentPath, int target) {
+        if (root.val == target) {
+            return true;
         }
-        number[seq] = root.val;
-        if (root.val == start) {
-            findStart = true;
-            path[0] = currentPath;
-            numbers[0] = Arrays.copyOf(number, 10001);
-        }
-        if (root.val == dest) {
-            findDest = true;
-            path[1] = currentPath;
-            numbers[1] = Arrays.copyOf(number, 10001);
-        }
-        if (findDest && findStart) {
-            return;
-        }
+
         if (root.left != null) {
-            help(root.left, currentPath + "L", Arrays.copyOf(number, 10001), seq+1);
+            currentPath.add('L');
+            if (help(root.left, currentPath, target)) {
+                return true;
+            }
+            currentPath.remove(currentPath.size()-1);
         }
         if (root.right != null) {
-            help(root.right, currentPath + "R", Arrays.copyOf(number, 10001), seq+1);
+            currentPath.add('R');
+            if (help(root.right, currentPath, target)) {
+                return true;
+            }
+            currentPath.remove(currentPath.size()-1);
         }
+        return false;
     }
 
     public static void main(String[] args) {
